@@ -1,14 +1,17 @@
+"use client";
+
+// ** react imports
+import { useState } from "react";
+
 // ** libraries imports
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 // ** local imports
-import { selectCartItems } from "../features/cartSlice";
-import { Stack } from "@mui/material";
-import { useAuth0 } from "@auth0/auth0-react";
 import CartItem from "./Modal/CartItem";
-import { useState } from "react";
+import { selectCartItems } from "../features/cartSlice";
 
 const Navbar = () => {
   // ** state

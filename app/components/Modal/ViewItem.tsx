@@ -1,13 +1,15 @@
-// ** react imports
+// ** react and next imports
 import React, { useState } from "react";
+import Image from "next/image";
 
 // ** libraries imports
 import Backdrop from "@mui/material/Backdrop";
-import { Box, Fade, ImageList, Modal, Stack, Typography } from "@mui/material";
-import Image from "next/image";
 import ImageListItem from "@mui/material/ImageListItem";
-import computeDiscount from "@/app/helpers/computeDiscount";
+import { Box, Fade, ImageList, Modal, Stack, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
+
+// ** local imports
+import computeDiscount from "@/app/helpers/computeDiscount";
 import {
   addToCart,
   removeFromCart,

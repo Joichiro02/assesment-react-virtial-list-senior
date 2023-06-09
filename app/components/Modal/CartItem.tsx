@@ -4,11 +4,10 @@ import React, { useEffect, useState } from "react";
 // ** libraries imports
 import Backdrop from "@mui/material/Backdrop";
 import { Box, Fade, ImageList, Modal, Stack, Typography } from "@mui/material";
-import Image from "next/image";
-import ImageListItem from "@mui/material/ImageListItem";
-import computeDiscount from "@/app/helpers/computeDiscount";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, selectCartItems } from "@/app/features/cartSlice";
+
+// ** local imports
+import { selectCartItems } from "@/app/features/cartSlice";
 
 interface IVIewItem {
   open: boolean;
@@ -43,6 +42,7 @@ export default function CartItem({ open, setOpen }: IVIewItem) {
   };
 
   useEffect(() => {
+    // ** grouping of same id items
     const groupItem = cartItems.reduce((results: any, item: any) => {
       (results[item.id] = results[item.id] || []).push(item);
 
