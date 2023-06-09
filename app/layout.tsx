@@ -4,6 +4,8 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { store } from "../store";
+import { Provider } from "react-redux";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,9 +34,11 @@ export default function RootLayout({
           redirect_uri: window.location.origin,
         }}
       >
-        <QueryClientProvider client={queryClient}>
-          <body className={inter.className}>{children}</body>
-        </QueryClientProvider>
+        <Provider store={store}>
+          <QueryClientProvider client={queryClient}>
+            <body className={inter.className}>{children}</body>
+          </QueryClientProvider>
+        </Provider>
       </Auth0Provider>
     </html>
   );
