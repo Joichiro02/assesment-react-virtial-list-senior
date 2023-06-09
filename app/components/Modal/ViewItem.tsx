@@ -7,8 +7,12 @@ import { Box, Fade, ImageList, Modal, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import ImageListItem from "@mui/material/ImageListItem";
 import computeDiscount from "@/app/helpers/computeDiscount";
-import { useDispatch } from "react-redux";
-import { addToCart } from "@/app/features/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToCart,
+  removeFromCart,
+  selectCartItemsWithId,
+} from "@/app/features/cartSlice";
 
 interface IVIewItem {
   data: IProducts;
@@ -32,6 +36,9 @@ export default function ViewItem({ data, open, setOpen }: IVIewItem) {
   // ** redux methods
   const dispatch = useDispatch();
 
+  // ** cart selecter
+  const items = useSelector((state) => selectCartItemsWithId(state, data.id));
+
   // ** state
   const [image, setImage] = useState<string>(data.thumbnail);
 
@@ -49,6 +56,15 @@ export default function ViewItem({ data, open, setOpen }: IVIewItem) {
   const addItemToCart = () => {
     dispatch(addToCart(data));
   };
+
+  // ** remove item to cart
+  const removeItemToCart = () => {
+    console.log(data.id);
+
+    dispatch(removeFromCart({ id: data.id }));
+  };
+
+  // console.log("@@@", items);
 
   return (
     <Modal
@@ -141,9 +157,23 @@ export default function ViewItem({ data, open, setOpen }: IVIewItem) {
               Category: {data.category}
             </span>
           </Stack>
-          <button className="absolute top-4 right-4 bg-blue-600 p-2 rounded-md hover:bg-blue-400">
-            Add to Cart
-          </button>
+          <div className="absolute top-4 right-4 space-x-3">
+            <button
+              onClick={removeItemToCart}
+              className={` ${
+                !items.length ? "bg-gray-600" : "bg-blue-600"
+              } p-2 rounded-md ${!items.length ? null : "hover:bg-blue-400"}`}
+              disabled={!items.length}
+            >
+              Remove to Cart
+            </button>
+            <button
+              onClick={addItemToCart}
+              className=" bg-blue-600 p-2 rounded-md hover:bg-blue-400"
+            >
+              Add to Cart
+            </button>
+          </div>
         </Box>
       </Fade>
     </Modal>

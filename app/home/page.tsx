@@ -1,10 +1,13 @@
 "use client";
 
+// ** libraries imports
 import { useAuth0 } from "@auth0/auth0-react";
+import { CircularProgress } from "@mui/material";
 
 export default function Home() {
   // ** auth methods
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+  const { isAuthenticated, isLoading, loginWithRedirect, logout, user } =
+    useAuth0();
 
   // ** login
   const handleLogin = () => {
@@ -15,6 +18,15 @@ export default function Home() {
   const handleLogout = () => {
     logout();
   };
+
+  // ** loading effect
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <CircularProgress color="inherit" />
+      </div>
+    );
+  }
 
   return (
     <main className="flex flex-col p-24 space-y-8">
