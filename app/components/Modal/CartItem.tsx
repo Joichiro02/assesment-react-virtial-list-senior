@@ -78,7 +78,10 @@ export default function CartItem({ open, setOpen }: IVIewItem) {
           <div className="text-black overflow-y-scroll h-80">
             <Stack>
               {Object.entries(groupItemInCart).map(([key, item]: any) => (
-                <div className="flex items-center justify-between py-2 px-8 bg-gray-300 m-1">
+                <div
+                  key={key}
+                  className="flex items-center justify-between py-2 px-8 bg-gray-300 m-1"
+                >
                   <p>{item.length}x</p>
                   <p>{item[0].title}</p>
                   <p>{item[0].brand}</p>

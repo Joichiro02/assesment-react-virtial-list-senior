@@ -10,7 +10,7 @@ import { Card, Rating, Stack } from "@mui/material";
 import computeDiscount from "@/app/helpers/computeDiscount";
 import ViewItem from "../Modal/ViewItem";
 
-export default function index({ columnIndex, data, rowIndex, style }: any) {
+export default function CardItem({ columnIndex, data, rowIndex, style }: any) {
   // ** state
   const [open, setOpen] = useState<boolean>(false);
 

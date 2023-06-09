@@ -7,7 +7,7 @@ import { FixedSizeGrid as Grid } from "react-window";
 import { useQuery } from "react-query";
 
 // ** local imports
-import Card from "../components/Card";
+import Card from "../components/Card/CardItem";
 import ProductServices from "../services/api/ProductServices";
 
 export default function List() {
