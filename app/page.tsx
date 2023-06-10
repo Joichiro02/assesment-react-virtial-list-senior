@@ -1,17 +1,13 @@
 "use client";
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  BrowserRouter,
-} from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Home from "./home";
-import About from "./about";
-import List from "./list";
-import Protected from "./routes/Protected";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+
+import About from "./about";
+import Home from "./home";
+import List from "./list";
+import Navbar from "./components/Navbar";
+import Protected from "./routes/Protected";
 
 function App() {
   const { isAuthenticated } = useAuth0();
