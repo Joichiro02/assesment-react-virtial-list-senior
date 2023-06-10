@@ -7,9 +7,9 @@ import {
   BrowserRouter,
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./home/page";
-import About from "./about/page";
-import List from "./list/page";
+import Home from "./home";
+import About from "./about";
+import List from "./list";
 import Protected from "./routes/Protected";
 import { useAuth0 } from "@auth0/auth0-react";
 
