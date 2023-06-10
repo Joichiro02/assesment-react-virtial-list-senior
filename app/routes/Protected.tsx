@@ -10,7 +10,7 @@ const Protected = ({ isAuthenticated, children }: IProtected) => {
   if (!isAuthenticated) {
     return <Navigate to="/" replace />;
   }
-  return children;
+  return <>children</>;
 };
 
 export default Protected;
